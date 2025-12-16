@@ -68,19 +68,25 @@ def _call_search(term: str) -> list[Dict[str, Any]]:
             return []
 
 
-def _pick_first(items: list[Dict[str, Any]]) -> Tuple[str, Dict[str, Any]] | None:
-    """Pick the first item from search results and extract its ID."""
+def _pick_first_with_property(
+    items: list[Dict[str, Any]], property_name: str
+) -> Tuple[str, Dict[str, Any]] | None:
+    """Pick the first item that has the specified property and extract its ID."""
     if not items:
         return None
-    first = items[0]
-    # Try to get foreignBookId for books, or foreignAuthorId for authors
-    api_id = (
-        first.get("foreignBookId")
-        or first.get("foreignAuthorId")
-        or first.get("foreignId")
-    )
-    if api_id:
-        return str(api_id), first
+
+    # Find first item with the specified property
+    for item in items:
+        if property_name in item:
+            # Try to get foreignBookId for books, or foreignAuthorId for authors
+            api_id = (
+                item.get("foreignBookId")
+                or item.get("foreignAuthorId")
+                or item.get("foreignId")
+            )
+            if api_id:
+                return str(api_id), item
+
     return None
 
 
@@ -104,49 +110,47 @@ def search_book(
     if goodreads_id:
         print(f"  -> Trying Goodreads ID: {goodreads_id}")
         items = _call_search(goodreads_id)
-        picked = _pick_first(items)
+        picked = _pick_first_with_property(items, "book")
         if picked is not None:
             api_id, data = picked
             print(f"  -> Found via Goodreads ID")
             return ApiResult(found=True, entity_type="book", api_id=api_id, extra=data)
-        print(f"  -> No results for Goodreads ID")
+        print(f"  -> No book results for Goodreads ID")
 
     # 2) Try isbn13.
     if isbn13:
         print(f"  -> Trying ISBN-13: {isbn13}")
         items = _call_search(isbn13)
-        picked = _pick_first(items)
+        picked = _pick_first_with_property(items, "book")
         if picked is not None:
             api_id, data = picked
             print(f"  -> Found via ISBN-13")
             return ApiResult(found=True, entity_type="book", api_id=api_id, extra=data)
-        print(f"  -> No results for ISBN-13")
+        print(f"  -> No book results for ISBN-13")
 
     # 3) Try isbn10.
     if isbn10:
         print(f"  -> Trying ISBN-10: {isbn10}")
         items = _call_search(isbn10)
-        picked = _pick_first(items)
+        picked = _pick_first_with_property(items, "book")
         if picked is not None:
             api_id, data = picked
             print(f"  -> Found via ISBN-10")
             return ApiResult(found=True, entity_type="book", api_id=api_id, extra=data)
-        print(f"  -> No results for ISBN-10")
+        print(f"  -> No book results for ISBN-10")
 
     # 4) Fallback to author search if we have an author name.
     if author:
         print(f"  -> Trying author search: {author}")
         items = _call_search(author)
-        picked = _pick_first(items)
+        picked = _pick_first_with_property(items, "author")
         if picked is not None:
             api_id, data = picked
-            # Determine entity type based on response structure
-            entity_type = "author" if "foreignAuthorId" in data else "book"
             print(f"  -> Found via author search")
             return ApiResult(
-                found=True, entity_type=entity_type, api_id=api_id, extra=data
+                found=True, entity_type="author", api_id=api_id, extra=data
             )
-        print(f"  -> No results for author search")
+        print(f"  -> No author results for author search")
 
     print("  -> No matches found after trying all available search values")
     return ApiResult(found=False)
