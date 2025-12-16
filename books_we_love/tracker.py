@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Dict, Iterable, Tuple
 
 from . import datastore
-from .api_client import ApiResult, search_book
+from .api_client import ApiResult, create_book, search_book
 from .downloader import DATA_DIR, _target_years
 
 FIRST_YEAR = 2013
@@ -153,13 +153,39 @@ def track_books(
                     now=now,
                 )
                 print("  -> marked as tracked in external system.")
-                result_data.update(
-                    {
-                        "status": "tracked",
-                        "entity_type": result.entity_type,
-                        "api_id": result.api_id,
-                    }
-                )
+
+                # If we found a book (not just an author), create it in Readarr
+                if result.entity_type == "book" and result.extra:
+                    print("  -> creating book in Readarr...")
+                    created_book = create_book(result.extra)
+                    if created_book:
+                        print("  -> book created successfully in Readarr.")
+                        result_data.update(
+                            {
+                                "status": "tracked",
+                                "entity_type": result.entity_type,
+                                "api_id": result.api_id,
+                                "created_in_readarr": True,
+                            }
+                        )
+                    else:
+                        print("  -> failed to create book in Readarr.")
+                        result_data.update(
+                            {
+                                "status": "tracked",
+                                "entity_type": result.entity_type,
+                                "api_id": result.api_id,
+                                "created_in_readarr": False,
+                            }
+                        )
+                else:
+                    result_data.update(
+                        {
+                            "status": "tracked",
+                            "entity_type": result.entity_type,
+                            "api_id": result.api_id,
+                        }
+                    )
             else:
                 datastore.mark_failed_with_backoff(
                     rec,
@@ -265,13 +291,39 @@ def track_books(
                     now=now,
                 )
                 print("  -> marked as tracked in external system.")
-                result_data.update(
-                    {
-                        "status": "tracked",
-                        "entity_type": result.entity_type,
-                        "api_id": result.api_id,
-                    }
-                )
+
+                # If we found a book (not just an author), create it in Readarr
+                if result.entity_type == "book" and result.extra:
+                    print("  -> creating book in Readarr...")
+                    created_book = create_book(result.extra)
+                    if created_book:
+                        print("  -> book created successfully in Readarr.")
+                        result_data.update(
+                            {
+                                "status": "tracked",
+                                "entity_type": result.entity_type,
+                                "api_id": result.api_id,
+                                "created_in_readarr": True,
+                            }
+                        )
+                    else:
+                        print("  -> failed to create book in Readarr.")
+                        result_data.update(
+                            {
+                                "status": "tracked",
+                                "entity_type": result.entity_type,
+                                "api_id": result.api_id,
+                                "created_in_readarr": False,
+                            }
+                        )
+                else:
+                    result_data.update(
+                        {
+                            "status": "tracked",
+                            "entity_type": result.entity_type,
+                            "api_id": result.api_id,
+                        }
+                    )
             else:
                 datastore.mark_failed_with_backoff(
                     rec,

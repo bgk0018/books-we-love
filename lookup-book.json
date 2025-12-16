@@ -1,0 +1,143 @@
+{
+        "foreignId": "878368",
+        "book": {
+            "title": "The Book Thief",
+            "authorTitle": "zusak, markus The Book Thief",
+            "seriesTitle": "",
+            "disambiguation": "",
+            "overview": "Librarian's note: An alternate cover edition can be found here\r\n\r\nIt is 1939. Nazi Germany. The country is holding its breath. Death has never been busier, and will be busier still.\r\n\r\nBy her brother's graveside, Liesel's life is changed when she picks up a single object, partially hidden in the snow. It is The Gravedigger's Handbook, left behind there by accident, and it is her first act of book thievery. So begins a love affair with books and words, as Liesel, with the help of her accordian-playing foster father, learns to read. Soon she is stealing books from Nazi book-burnings, the mayor's wife's library, wherever there are books to be found.\r\n\r\nBut these are dangerous times. When Liesel's foster family hides a Jew in their basement, Liesel's world is both opened up, and closed down.\r\n\r\nIn superbly crafted writing that burns with intensity, award-winning author Markus Zusak has given us one of the most enduring stories of our time.\r\n\r\n(Note: this title was not published as YA fiction)",
+            "authorId": 0,
+            "foreignBookId": "878368",
+            "foreignEditionId": "19063",
+            "titleSlug": "878368",
+            "monitored": false,
+            "anyEditionOk": true,
+            "ratings": {
+                "votes": 2518052,
+                "value": 4.38,
+                "popularity": 11029067.76
+            },
+            "releaseDate": "2005-09-01T07:00:00Z",
+            "pageCount": 592,
+            "genres": [
+                "Historical Fiction",
+                "Fiction",
+                "Young Adult",
+                "Classics",
+                "Historical",
+                "Book Club",
+                "War",
+                "World War II",
+                "Holocaust",
+                "Audiobook"
+            ],
+            "author": {
+                "authorMetadataId": 0,
+                "status": "continuing",
+                "ended": false,
+                "authorName": "Markus Zusak",
+                "authorNameLastFirst": "Zusak, Markus",
+                "foreignAuthorId": "11466",
+                "titleSlug": "11466",
+                "overview": "Markus Zusak is the author of five books, including the international bestseller, \n  The Book Thief\n, which spent more than a decade on the New York Times bestseller list, and is translated into more than forty languages – establishing Zusak as one of the most successful authors to come out of Australia.To date, Zusak has held the number one position at Amazon.com, Amazon.co.uk, the New York Times bestseller list, as well as in countries across South America, Europe and Asia. His books, \n  The Underdog, Fighting Ruben Wolfe, When Dogs Cry\n (also titled \n  Getting the Girl\n), \n  The Messenger\n (or \n  I am the Messenger\n) and \n  The Book Thief\n have been awarded numerous honours ranging from literary prizes to readers choice awards to prizes voted on by booksellers.Zusak’s much-anticipated new novel, \n  Bridge of Clay\n, is set for release in October 2018 in the USA, the UK and Australia, with foreign translations to follow.",
+                "links": [
+                    {
+                        "url": "https://www.goodreads.com/author/show/11466.Markus_Zusak",
+                        "name": "Goodreads"
+                    }
+                ],
+                "images": [
+                    {
+                        "url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/authors/1537240528i/11466._UY200_CR43,0,200,200_.jpg",
+                        "coverType": "poster",
+                        "extension": ".jpg"
+                    }
+                ],
+                "qualityProfileId": 0,
+                "metadataProfileId": 0,
+                "monitored": false,
+                "monitorNewItems": "all",
+                "folder": "Markus Zusak",
+                "genres": [],
+                "cleanName": "markuszusak",
+                "sortName": "markus zusak",
+                "sortNameLastFirst": "zusak, markus",
+                "tags": [],
+                "added": "0001-01-01T05:51:00Z",
+                "ratings": {
+                    "votes": 0,
+                    "value": 0,
+                    "popularity": 0
+                },
+                "statistics": {
+                    "bookFileCount": 0,
+                    "bookCount": 0,
+                    "availableBookCount": 0,
+                    "totalBookCount": 0,
+                    "sizeOnDisk": 0,
+                    "percentOfBooks": 0
+                }
+            },
+            "images": [
+                {
+                    "url": "/MediaCoverProxy/f64f99d0219cc8875f7fb4703dc605c4e73736a8d494ddf001a02ba19c1882ce/19063.jpg",
+                    "coverType": "cover",
+                    "extension": ".jpg",
+                    "remoteUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1522157426i/19063.jpg"
+                }
+            ],
+            "links": [
+                {
+                    "url": "https://www.goodreads.com/work/878368-the-book-thief",
+                    "name": "Goodreads Editions"
+                },
+                {
+                    "url": "https://www.goodreads.com/book/show/19063.The_Book_Thief",
+                    "name": "Goodreads Book"
+                }
+            ],
+            "added": "0001-01-01T05:51:00Z",
+            "remoteCover": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1522157426i/19063.jpg",
+            "editions": [
+                {
+                    "bookId": 0,
+                    "foreignEditionId": "19063",
+                    "titleSlug": "19063",
+                    "asin": "0375831002",
+                    "title": "The Book Thief",
+                    "language": "eng",
+                    "overview": "Librarian's note: An alternate cover edition can be found here\r\n\r\nIt is 1939. Nazi Germany. The country is holding its breath. Death has never been busier, and will be busier still.\r\n\r\nBy her brother's graveside, Liesel's life is changed when she picks up a single object, partially hidden in the snow. It is The Gravedigger's Handbook, left behind there by accident, and it is her first act of book thievery. So begins a love affair with books and words, as Liesel, with the help of her accordian-playing foster father, learns to read. Soon she is stealing books from Nazi book-burnings, the mayor's wife's library, wherever there are books to be found.\r\n\r\nBut these are dangerous times. When Liesel's foster family hides a Jew in their basement, Liesel's world is both opened up, and closed down.\r\n\r\nIn superbly crafted writing that burns with intensity, award-winning author Markus Zusak has given us one of the most enduring stories of our time.\r\n\r\n(Note: this title was not published as YA fiction)",
+                    "format": "Kindle Edition",
+                    "isEbook": true,
+                    "disambiguation": "",
+                    "publisher": "Alfred A. Knopf",
+                    "pageCount": 592,
+                    "releaseDate": "2006-03-14T08:00:00Z",
+                    "images": [
+                        {
+                            "url": "/MediaCoverProxy/f64f99d0219cc8875f7fb4703dc605c4e73736a8d494ddf001a02ba19c1882ce/19063.jpg",
+                            "coverType": "cover",
+                            "extension": ".jpg",
+                            "remoteUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1522157426i/19063.jpg"
+                        }
+                    ],
+                    "links": [
+                        {
+                            "url": "https://www.goodreads.com/book/show/19063.The_Book_Thief",
+                            "name": "Goodreads Book"
+                        }
+                    ],
+                    "ratings": {
+                        "votes": 2518052,
+                        "value": 4.38,
+                        "popularity": 11029067.76
+                    },
+                    "monitored": true,
+                    "manualAdd": false,
+                    "grabbed": false
+                }
+            ],
+            "grabbed": false
+        },
+        "id": 2
+    }
