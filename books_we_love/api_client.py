@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import os
 from dataclasses import dataclass, field
 from typing import Any, Dict, Literal, Tuple
@@ -37,11 +38,26 @@ def _call_book_lookup(term: str) -> list[Dict[str, Any]]:
     with ApiClient(cfg) as api_client:
         api_instance = BookLookupApi(api_client)
         try:
-            result = api_instance.get_book_lookup(term=term)
+            # Use with_http_info to get full response; response_type is None so we parse manually
+            response = api_instance.get_book_lookup_with_http_info(term=term)
+            if response.data is not None:
+                # If data was deserialized, use it
+                result = response.data
+            else:
+                # Otherwise parse raw_data as JSON
+                raw_json = response.raw_data.decode("utf-8")
+                result = json.loads(raw_json) if raw_json else []
+
+            if not result:
+                return []
             if isinstance(result, list):
-                return result
+                return [
+                    item if isinstance(item, dict) else item.to_dict()
+                    for item in result
+                ]
             return []
-        except Exception:
+        except Exception as e:
+            print(f"  -> API error: {type(e).__name__}: {e}")
             return []
 
 
@@ -51,11 +67,26 @@ def _call_author_lookup(term: str) -> list[Dict[str, Any]]:
     with ApiClient(cfg) as api_client:
         api_instance = AuthorLookupApi(api_client)
         try:
-            result = api_instance.get_author_lookup(term=term)
+            # Use with_http_info to get full response; response_type is None so we parse manually
+            response = api_instance.get_author_lookup_with_http_info(term=term)
+            if response.data is not None:
+                # If data was deserialized, use it
+                result = response.data
+            else:
+                # Otherwise parse raw_data as JSON
+                raw_json = response.raw_data.decode("utf-8")
+                result = json.loads(raw_json) if raw_json else []
+
+            if not result:
+                return []
             if isinstance(result, list):
-                return result
+                return [
+                    item if isinstance(item, dict) else item.to_dict()
+                    for item in result
+                ]
             return []
-        except Exception:
+        except Exception as e:
+            print(f"  -> API error: {type(e).__name__}: {e}")
             return []
 
 
@@ -63,9 +94,7 @@ def _pick_first(items: list[Dict[str, Any]]) -> Tuple[str, Dict[str, Any]] | Non
     if not items:
         return None
     first = items[0]
-    api_id = first.get("id")
-    if api_id is None:
-        return None
+    api_id = first.get("foreignBookId")
     return str(api_id), first
 
 
