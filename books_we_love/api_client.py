@@ -11,7 +11,6 @@ from readarr import (
     BookApi,
     BookResource,
     Configuration,
-    QualityProfileApi,
     SearchApi,
 )
 
@@ -153,20 +152,6 @@ def search_book(
     return ApiResult(found=False)
 
 
-def _get_default_quality_profile_id() -> int | None:
-    """Get the first available quality profile ID from Readarr."""
-    try:
-        cfg = _load_config()
-        with ApiClient(cfg) as api_client:
-            api_instance = QualityProfileApi(api_client)
-            profiles = api_instance.list_quality_profile()
-            if profiles and len(profiles) > 0:
-                return profiles[0].id
-    except Exception:
-        pass
-    return None
-
-
 def _transform_lookup_to_post(lookup_data: Dict[str, Any]) -> Dict[str, Any]:
     """
     Transform lookup response format to POST format for creating a book.
@@ -212,11 +197,6 @@ def _transform_lookup_to_post(lookup_data: Dict[str, Any]) -> Dict[str, Any]:
                 author["qualityProfileId"] = int(quality_profile_id)
             except ValueError:
                 pass
-
-        if "qualityProfileId" not in author:
-            default_profile_id = _get_default_quality_profile_id()
-            if default_profile_id:
-                author["qualityProfileId"] = default_profile_id
 
         # Metadata profile ID (try env var, default to 1 if not set)
         metadata_profile_id = os.getenv("READARR_METADATA_PROFILE_ID")
